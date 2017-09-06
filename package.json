@@ -1,0 +1,25 @@
+{
+  "name": "vue-css-grid",
+  "version": "0.0.1",
+  "description": "A tool for easier grid CSS layout",
+  "main": "src/index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ederchrono/vue-css-grid.git"
+  },
+  "keywords": [
+    "VueJs",
+    "CSS",
+    "grid",
+    "css-grid",
+    "responsive"
+  ],
+  "author": "ederchrono@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ederchrono/vue-css-grid/issues"
+  },
+  "homepage": "https://github.com/ederchrono/vue-css-grid#readme"
+}
