@@ -1,6 +1,6 @@
 # vue-css-grid
 
-> A tool for easier grid css layout
+>Components for easier grid CSS layouts in Vue
 
 ## Installation
 
