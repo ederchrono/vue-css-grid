@@ -1,10 +1,9 @@
 {
   "name": "vue-css-grid",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Components for easier grid CSS layouts in Vue",
   "main": "src/index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ederchrono/vue-css-grid.git"
