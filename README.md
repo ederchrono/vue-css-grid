@@ -25,6 +25,45 @@ Vue.component('grid-item', gridItem)
 Vue.component('responsive', responsive)
 ```
 
+## Component props and events
+### grid
+A component to define the grid properties. It should contain `grid-item` components directly in the first level.
+
+#### columns: required
+Array of strings that defines the number of columns and their size. 
+
+You can use any combination of css sizing rules like `20px`, `1fr`, `20%` or `auto`.
+
+#### rows: required
+Array of strings that defines the number of rows and their size. 
+
+Also you can use any combination of css sizing rules.
+
+#### areas: required
+A matrix of strings with dimensions `rows x columns`.
+
+Define the areas that will fill each cell of the grid.
+
+### grid-item
+Component to define the area of the grid to be used. It must be directly inside a `grid` component.
+
+You can add another `grid` component inside the `grid-item` to create more complex layouts nesting grids.
+
+#### area: required
+A string that matches one of the areas defined in the grid component
+
+#### html-tag: optional
+By default the `grid-item` will create a `<div>`, whit this property you can define the HTML element.
+
+### responsive
+An abstract component (won't render anything), it emits events when the viewport changes its size.
+
+#### @widthChange: Number
+When the viewport changes, this will emmit the width of the viewport.
+
+#### @heightChange: Number
+When the viewport changes, this will emmit the height of the viewport.
+
 ## Usage
 
 ```HTML
