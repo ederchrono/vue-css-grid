@@ -14,16 +14,16 @@ export default {
   },
 
   methods: {
+    update () {
+      this.$emit('input', {
+        width: this.width,
+        height: this.height
+      })
+    },
     onResize () {
-      if (this.width !== window.innerWidth) {
-        this.width = window.innerWidth
-        this.$emit('widthChange', this.width)
-      }
-
-      if (this.height !== window.innerHeight) {
-        this.height = window.innerHeight
-        this.$emit('heightChange', this.height)
-      }
+      this.width = window.innerWidth
+      this.height = window.innerHeight
+      this.update()
     }
   },
 
@@ -32,8 +32,7 @@ export default {
     this.width = window.innerWidth
     this.height = window.innerHeight
 
-    this.$emit('widthChange', this.width)
-    this.$emit('heightChange', this.height)
+    this.update()
   },
 
   beforeDestroy () {

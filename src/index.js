@@ -1,5 +1,5 @@
-import grid from './components/grid.vue'
-import gridItem from './components/gridItem.vue'
-import responsive from './components/responsive.vue'
+import Grid from './components/Grid.vue'
+import GridItem from './components/GridItem.vue'
+import ResizeListener from './components/ResizeListener.vue'
 
-export { grid, gridItem, responsive }
+export { Grid, GridItem, ResizeListener }
