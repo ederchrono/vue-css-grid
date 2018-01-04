@@ -70,8 +70,8 @@ A component that just adds functionality (won't render anything), it emits event
   :columns="['200px', 'auto']"
   :rows="['150px', 'auto', '100px']"
   :areas="[
-    ['header', 'header']
-    ['sidebar', 'main']
+    ['header', 'header'],
+    ['sidebar', 'main'],
     ['footer', 'footer']
   ]">
 
