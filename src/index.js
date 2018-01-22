@@ -1,5 +1,5 @@
-import Grid from './components/Grid.vue'
-import GridItem from './components/GridItem.vue'
-import ResizeListener from './components/ResizeListener.vue'
+import CssGrid from './components/CssGrid.vue'
+import CssGridItem from './components/CssGridItem.vue'
+import ViewportSize from './components/ViewportSize.vue'
 
-export { Grid, GridItem, ResizeListener }
+export { CssGrid, GridItem, ViewportSize }
