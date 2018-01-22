@@ -19,7 +19,6 @@ export default {
   computed: {
     style () {
       return {
-        display: 'grid',
         gridArea: this.area,
         border: this.debugCss
       }
