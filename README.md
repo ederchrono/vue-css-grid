@@ -26,6 +26,8 @@ Vue.component('viewport-listener', ViewportListener)
 
 ```
 
+
+
 ## Component props and events
 ### `<css-grid>`
 A component to define the grid properties. It should contain `css-grid-item` components directly in the first level.
@@ -42,6 +44,8 @@ A component to define the grid properties. It should contain `css-grid-item` com
 >A matrix of strings with dimensions `rows x columns`.
 >It defines the areas that will fill each cell of the grid.
 
+
+
 ### `<css-grid-item>`
 Component to define the area of the grid to be used. It must be directly inside a `css-grid` component.
 
@@ -53,24 +57,24 @@ You can add another `css-grid` component inside the `css-grid-item` to create mo
 >##### html-tag: optional
 >By default the `css-grid-item` will create a `<div>`, with this property you can define the HTML element.
 
+
+
 ### `<viewport-listener>`
 A component that just adds functionality (won't render anything), it emits an object with viewport data, that you can use with v-model.
 
 #### Viewport v-model object properties
 >##### width: Number
->When the viewport changes, this will be set to the viewport width.
-
+>When the viewport width changes, this property will have the current value.
 >##### height: Number
->When the viewport changes, this will be set to the viewport height.
-
+>When the viewport height changes, this property will have the current value.
 >##### isPhone: Boolean
->viewport.width < 768
+>True when `viewport.width < 768`
 >##### isTablet: Boolean
->768 <=viewport.width < 992
+>True when `768 <= viewport.width < 992`
 >##### isDesktop: Boolean
->992 <= viewport.width < 1200
+>True when `992 <= viewport.width < 1200`
 >##### isLargeDesktop: Boolean
->viewport.width >= 1200
+>True when `viewport.width >= 1200`
 
 ## Usage
 
