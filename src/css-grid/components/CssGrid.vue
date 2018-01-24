@@ -25,10 +25,6 @@ export default {
     }
   },
 
-  watch: {
-    // TODO check that lengths of columns, rows and areas match
-  },
-
   computed: {
     style () {
       return {
