@@ -56,7 +56,7 @@ You can add another `css-grid` component inside the `css-grid-item` to create mo
 ### `<viewport-listener>`
 A component that just adds functionality (won't render anything), it emits an object with viewport data, that you can use with v-model.
 
-#### Viewport Object properties
+#### Viewport v-model object properties
 >##### width: Number
 >When the viewport changes, this will be set to the viewport width.
 
@@ -103,6 +103,8 @@ A component that just adds functionality (won't render anything), it emits an ob
   <css-grid-item area="footer">
     <h3>Footer</h3>
   </css-grid-item>
+
+  <viewport-listener v-model="viewportObject">
 </css-grid>
 ```
 
