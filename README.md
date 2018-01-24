@@ -13,21 +13,22 @@ npm install --save vue-css-grid
 ```javascript
 import Vue from 'vue'
 
-import { grid, gridItem, responsive } from 'vue-css-grid'
+import { CssGrid, CssGridItem, ViewportListener } from 'vue-css-grid'
 
 // Your main grid component, it declares the layout
-Vue.component('grid', grid)
+Vue.component('css-grid', CssGrid)
 
 // A grid item to use inside the grid component
-Vue.component('grid-item', gridItem)
+Vue.component('css-grid-item', CssGridItem)
 
-// Optional component to listen to width changes
-Vue.component('responsive', responsive)
+// Optional component to listen to viewport width and height changes
+Vue.component('viewport-listener', ViewportListener)
+
 ```
 
 ## Component props and events
-### `<grid>`
-A component to define the grid properties. It should contain `grid-item` components directly in the first level.
+### `<css-grid>`
+A component to define the grid properties. It should contain `css-grid-item` components directly in the first level.
 #### Props
 >##### columns: required
 >Array of strings that defines the number of columns and their size. 
@@ -41,32 +42,42 @@ A component to define the grid properties. It should contain `grid-item` compone
 >A matrix of strings with dimensions `rows x columns`.
 >It defines the areas that will fill each cell of the grid.
 
-### `<grid-item>`
-Component to define the area of the grid to be used. It must be directly inside a `grid` component.
+### `<css-grid-item>`
+Component to define the area of the grid to be used. It must be directly inside a `css-grid` component.
 
-You can add another `grid` component inside the `grid-item` to create more complex layouts nesting grids.
+You can add another `css-grid` component inside the `css-grid-item` to create more complex layouts nesting grids.
 #### Props
 >##### area: required
 >A string that matches one of the areas defined in the grid component
 
 >##### html-tag: optional
->By default the `grid-item` will create a `<div>`, whit this property you can define the HTML element.
+>By default the `css-grid-item` will create a `<div>`, with this property you can define the HTML element.
 
-### `<responsive>`
-A component that just adds functionality (won't render anything), it emits events when the viewport changes its size.
-#### Events
->##### @widthChange: Number
->When the viewport changes, this will emmit the width of the viewport.
+### `<viewport-listener>`
+A component that just adds functionality (won't render anything), it emits an object with viewport data, that you can use with v-model.
 
->##### @heightChange: Number
->When the viewport changes, this will emmit the height of the viewport.
+#### Viewport v-model object properties
+>##### width: Number
+>When the viewport changes, this will be set to the viewport width.
+
+>##### height: Number
+>When the viewport changes, this will be set to the viewport height.
+
+>##### isPhone: Boolean
+>viewport.width < 768
+>##### isTablet: Boolean
+>768 <=viewport.width < 992
+>##### isDesktop: Boolean
+>992 <= viewport.width < 1200
+>##### isLargeDesktop: Boolean
+>viewport.width >= 1200
 
 ## Usage
 
 ```HTML
 <!-- A 2x3 example -->
 <!-- For columns and rows you can use %, px, fr or any CSS measure -->
-<grid
+<css-grid
   :columns="['200px', 'auto']"
   :rows="['150px', 'auto', '100px']"
   :areas="[
@@ -76,117 +87,27 @@ A component that just adds functionality (won't render anything), it emits event
   ]">
 
   <!-- This item would fill the top row, both cells called "header" in the areas -->
-  <grid-item area="header">
+  <css-grid-item area="header">
     <h2>Header</h2>
-  </grid-item>
+  </css-grid-item>
 
-  <grid-item area="sidebar">
+  <css-grid-item area="sidebar">
     <p>sidebar</p>
-  </grid-item>
+  </css-grid-item>
 
   <!-- Define a custom html tag -->
-  <grid-item area="main" html-tag="article">
+  <css-grid-item area="main" html-tag="article">
     <h1>Main</h1>
-  </grid-item>
+  </css-grid-item>
 
-  <grid-item area="footer">
+  <css-grid-item area="footer">
     <h3>Footer</h3>
-  </grid-item>
+  </css-grid-item>
 
-  <responsive @widthChange="myMethod"/>  
-</grid>
+  <viewport-listener v-model="viewportObject">
+</css-grid>
 ```
 
 
 ## Example
-### A full example with responsive breakpoints
-```HTML
-<template>
-  <grid
-    :columns="currentGrid.columns"
-    :rows="currentGrid.rows"
-    :areas="currentGrid.areas">
-
-    <grid-item area="title">
-      <h1>A grid experiment!</h1>
-    </grid-item>
-
-    <grid-item area="header">
-      <h2>Header</h2>
-    </grid-item>
-
-    <grid-item area="main">
-      <h2>Main</h2>
-    </grid-item>
-
-    <grid-item area="sidebar">
-      <h2>Sidebar</h2>
-    </grid-item>
-
-    <grid-item area="footer">
-      <h2>footer</h2>
-    </grid-item>
-
-    <responsive @widthChange="updateViewportWidth"/>    
-  </grid>
-</template>
-
-<script>
-export default {
-  data () {
-    return {
-      mobileGrid: {
-        columns: ['100%'],
-        rows: ['auto', 'auto', 'auto', 'auto', 'auto'],
-        areas: [
-          ['title'],
-          ['header'],
-          ['main'],
-          ['sidebar'],
-          ['footer']
-        ]
-      },
-      tabletGrid: {
-        columns: ['60%', 'auto'],
-        rows: ['200px', '450px', 'auto', '200px'],
-        areas: [
-          ['header', 'header'],
-          ['main', 'title'],
-          ['main', 'sidebar'],
-          ['footer', 'footer']
-        ]
-      },
-      desktopGrid: {
-        columns: ['30%', 'auto', '20%'],
-        rows: ['100px', 'auto', '100px'],
-        areas: [
-          ['title', 'title', 'title'],
-          ['main', 'header', 'header'],
-          ['main', 'sidebar', 'footer']
-        ]
-      },
-      viewportWidth: 320
-    }
-  },
-
-  computed: {
-    currentGrid () {
-      if (this.viewportWidth > 768) {
-        return this.desktopGrid
-      }
-      if (this.viewportWidth > 576) {
-        return this.tabletGrid
-      }
-
-      return this.mobileGrid
-    }
-  },
-
-  methods: {
-    updateViewportWidth (width) {
-      this.viewportWidth = width
-    }
-  }
-}
-</script>
-```
+>For a full running example with responsive breakpoints, refer to [Example.vue](./src/Example.vue)
