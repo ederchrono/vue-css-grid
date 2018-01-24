@@ -2,7 +2,7 @@
   "name": "vue-css-grid",
   "version": "0.1.0",
   "description": "Components for easier grid CSS layouts in Vue",
-  "main": "src/css-grid/index.js",
+  "main": "src/vue-css-grid/index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
@@ -16,6 +16,7 @@
     "url": "git+https://github.com/ederchrono/vue-css-grid.git"
   },
   "keywords": [
+    "vue",
     "VueJs",
     "CSS",
     "grid",

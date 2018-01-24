@@ -21,7 +21,7 @@ Vue.component('css-grid', CssGrid)
 // A grid item to use inside the grid component
 Vue.component('css-grid-item', CssGridItem)
 
-// Optional component to listen to width changes
+// Optional component to listen to viewport width and height changes
 Vue.component('viewport-listener', ViewportListener)
 
 ```
@@ -108,91 +108,4 @@ A component that just adds functionality (won't render anything), it emits an ob
 
 
 ## Example
-### A full example with responsive breakpoints
-```HTML
-<template>
-  <css-grid
-    :columns="currentGrid.columns"
-    :rows="currentGrid.rows"
-    :areas="currentGrid.areas">
-
-    <css-grid-item area="title">
-      <h1>A grid experiment!</h1>
-    </css-grid-item>
-
-    <css-grid-item area="header">
-      <h2>Header</h2>
-    </css-grid-item>
-
-    <css-grid-item area="main">
-      <h2>Main</h2>
-    </css-grid-item>
-
-    <css-grid-item area="sidebar">
-      <h2>Sidebar</h2>
-    </css-grid-item>
-
-    <css-grid-item area="footer">
-      <h2>footer</h2>
-    </css-grid-item>
-
-    <viewport-listener v-model="viewport"/>
-  </css-grid>
-</template>
-
-<script>
-export default {
-  data () {
-    return {
-      viewport: {width: 320, height: 568},
-
-      desktopGrid: {
-        columns: ['30%', 'auto', '20%'],
-        rows: ['100px', '500px', '100px'],
-        areas: [
-          ['title', 'title', 'title'],
-          ['main', 'header', 'header'],
-          ['main', 'sidebar', 'footer']
-        ]
-      },
-
-      tabletGrid: {
-        columns: ['60%', 'auto'],
-        rows: ['200px', '450px', 'auto', '200px'],
-        areas: [
-          ['header', 'header'],
-          ['main', 'title'],
-          ['main', 'sidebar'],
-          ['footer', 'footer']
-        ]
-      },
-
-      mobileGrid: {
-        columns: ['100%'],
-        rows: ['auto', 'auto', 'auto', 'auto', 'auto'],
-        areas: [
-          ['title'],
-          ['header'],
-          ['main'],
-          ['sidebar'],
-          ['footer']
-        ]
-      }
-    }
-  },
-
-  computed: {
-    currentGrid () {
-      if (this.viewport.isDesktop ||
-        this.viewport.isLargeDesktop) {
-        return this.desktopGrid
-      }
-      if (this.viewport.isTablet) {
-        return this.tabletGrid
-      }
-      return this.mobileGrid
-    }
-  }
-}
-</script>
-```
+>For a full running example with responsive breakpoints, refer to [Example.vue](./src/Example.vue)

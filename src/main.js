@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import Example from './Example'
 
-import { CssGrid, CssGridItem, ViewportListener } from './css-grid'
+import { CssGrid, CssGridItem, ViewportListener } from './vue-css-grid'
 Vue.component('css-grid', CssGrid)
 Vue.component('css-grid-item', CssGridItem)
 Vue.component('viewport-listener', ViewportListener)
