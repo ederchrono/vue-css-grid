@@ -6,7 +6,7 @@ import Example from './Example'
 import { CssGrid, CssGridItem, ViewportListener } from './css-grid'
 Vue.component('css-grid', CssGrid)
 Vue.component('css-grid-item', CssGridItem)
-Vue.component('viewportListener', ViewportListener)
+Vue.component('viewport-listener', ViewportListener)
 
 Vue.config.productionTip = false
 

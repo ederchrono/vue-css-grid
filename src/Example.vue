@@ -34,15 +34,13 @@ export default {
     return {
       viewport: {width: 320, height: 568},
 
-      mobileGrid: {
-        columns: ['100%'],
-        rows: ['auto', 'auto', 'auto', 'auto', 'auto'],
+      desktopGrid: {
+        columns: ['30%', 'auto', '20%'],
+        rows: ['100px', '500px', '100px'],
         areas: [
-          ['title'],
-          ['header'],
-          ['main'],
-          ['sidebar'],
-          ['footer']
+          ['title', 'title', 'title'],
+          ['main', 'header', 'header'],
+          ['main', 'sidebar', 'footer']
         ]
       },
 
@@ -57,13 +55,15 @@ export default {
         ]
       },
 
-      desktopGrid: {
-        columns: ['30%', 'auto', '20%'],
-        rows: ['100px', '500px', '100px'],
+      mobileGrid: {
+        columns: ['100%'],
+        rows: ['auto', 'auto', 'auto', 'auto', 'auto'],
         areas: [
-          ['title', 'title', 'title'],
-          ['main', 'header', 'header'],
-          ['main', 'sidebar', 'footer']
+          ['title'],
+          ['header'],
+          ['main'],
+          ['sidebar'],
+          ['footer']
         ]
       }
     }
@@ -71,13 +71,13 @@ export default {
 
   computed: {
     currentGrid () {
-      if (this.viewport.width > 768) {
+      if (this.viewport.isDesktop ||
+        this.viewport.isLargeDesktop) {
         return this.desktopGrid
       }
-      if (this.viewport.width > 576) {
+      if (this.viewport.isTablet) {
         return this.tabletGrid
       }
-
       return this.mobileGrid
     }
   }
