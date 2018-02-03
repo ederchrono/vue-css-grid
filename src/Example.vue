@@ -5,23 +5,33 @@
     :areas="currentGrid.areas">
 
     <css-grid-item area="title">
-      <h1>A grid experiment!</h1>
+      <color-block>
+        <h1>A grid experiment!</h1>
+      </color-block>
     </css-grid-item>
 
-    <css-grid-item area="header">
-      <h2>Header</h2>
+    <css-grid-item area="leftbar">
+      <color-block color="green">
+        <h2>Left bar</h2>
+      </color-block>
     </css-grid-item>
 
     <css-grid-item area="main">
-      <h2>Main</h2>
+      <color-block color="blue">
+        <h2>Main</h2>
+      </color-block>
     </css-grid-item>
 
-    <css-grid-item area="sidebar">
-      <h2>Sidebar</h2>
+    <css-grid-item area="rightbar">
+      <color-block color="yellow">
+        <h2>Right bar</h2>
+      </color-block>
     </css-grid-item>
 
     <css-grid-item area="footer">
-      <h2>footer</h2>
+      <color-block color="purple">
+        <h2>footer</h2>
+      </color-block>
     </css-grid-item>
 
     <viewport-listener v-model="viewport"/>
@@ -29,40 +39,52 @@
 </template>
 
 <script>
+import colorBlock from './examples/ColorBlock'
+
 export default {
+  components: {
+    colorBlock
+  },
+
   data () {
     return {
       viewport: {width: 320, height: 568},
 
       desktopGrid: {
-        columns: ['30%', 'auto', '20%'],
+        columns: ['20%', 'auto', '20%'],
         rows: ['100px', '500px', '100px'],
         areas: [
           ['title', 'title', 'title'],
-          ['main', 'header', 'header'],
-          ['main', 'sidebar', 'footer']
+          ['leftbar', 'main', 'rightbar'],
+          ['footer', 'footer', 'footer']
         ]
       },
 
       tabletGrid: {
-        columns: ['60%', 'auto'],
-        rows: ['200px', '450px', 'auto', '200px'],
+        columns: ['30%', 'auto'],
+        rows: ['150px', '400px', '400px', '100px'],
         areas: [
-          ['header', 'header'],
-          ['main', 'title'],
-          ['main', 'sidebar'],
+          ['title', 'title'],
+          ['leftbar', 'main'],
+          ['rightbar', 'main'],
           ['footer', 'footer']
         ]
       },
 
       mobileGrid: {
         columns: ['100%'],
-        rows: ['auto', 'auto', 'auto', 'auto', 'auto'],
+        rows: [
+          '80px',
+          '300px',
+          '100px',
+          '100px',
+          '80px'
+        ],
         areas: [
           ['title'],
-          ['header'],
           ['main'],
-          ['sidebar'],
+          ['leftbar'],
+          ['rightbar'],
           ['footer']
         ]
       }
