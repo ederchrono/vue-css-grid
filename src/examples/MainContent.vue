@@ -1,6 +1,6 @@
 <template>
   <css-grid
-    gap="10px"
+    gap="5px 10px"
     :columns="['1fr', '1fr', '1fr', '1fr']"
     auto-rows="120px">
     <!-- auto-rows/columns is used when the content is of unkown length -->
