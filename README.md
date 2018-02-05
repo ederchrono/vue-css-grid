@@ -106,4 +106,5 @@ A component that just adds functionality (won't render anything), it emits an ob
 >True when `viewport.width >= 1200`
 
 ## Example
->For a full running example with responsive breakpoints, refer to [Example.vue](./src/Example.vue)
+You can clone this project, install all dev dependencies with `npm install` and then `npm run dev` to see a live running example with responsive breakpoints.
+>For usage reference you can also check directly [Example.vue](./src/Example.vue) and [MainContent.vue](./src/examples/MainContent.vue) components.
