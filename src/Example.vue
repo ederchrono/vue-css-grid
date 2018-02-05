@@ -5,31 +5,30 @@
     :areas="currentGrid.areas">
 
     <css-grid-item area="title">
-      <color-block>
-        <h1>A grid experiment!</h1>
+      <color-block color="#BBBDF6">
+        <h1>A typical web layout</h1>
       </color-block>
     </css-grid-item>
 
     <css-grid-item area="leftbar">
-      <color-block color="green">
+      <color-block color="#FE4A49">
         <h2>Left bar</h2>
       </color-block>
     </css-grid-item>
 
     <css-grid-item area="main">
-      <color-block color="blue">
-        <h2>Main</h2>
-      </color-block>
+      <h1>nested grid with auto-row and no areas</h1>
+      <main-content />
     </css-grid-item>
 
     <css-grid-item area="rightbar">
-      <color-block color="yellow">
+      <color-block color="#009FB7">
         <h2>Right bar</h2>
       </color-block>
     </css-grid-item>
 
     <css-grid-item area="footer">
-      <color-block color="purple">
+      <color-block color="#8D6B94">
         <h2>footer</h2>
       </color-block>
     </css-grid-item>
@@ -40,10 +39,12 @@
 
 <script>
 import colorBlock from './examples/ColorBlock'
+import mainContent from './examples/MainContent'
 
 export default {
   components: {
-    colorBlock
+    colorBlock,
+    mainContent
   },
 
   data () {
@@ -75,7 +76,7 @@ export default {
         columns: ['100%'],
         rows: [
           '80px',
-          '300px',
+          'auto',
           '100px',
           '100px',
           '80px'

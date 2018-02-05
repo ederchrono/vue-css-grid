@@ -9,36 +9,61 @@ export default {
   props: {
     columns: {
       type: Array,
-      required: true
+      default: null
     },
     rows: {
       type: Array,
-      required: true
+      default: null
     },
     areas: {
       type: Array,
-      required: true
+      default: () => []
     },
     htmlTag: {
       type: String,
       default: 'div'
+    },
+    gap: {
+      type: String,
+      default: null
+    },
+    gridAutoRows: {
+      type: String,
+      default: null
+    },
+    gridAutoColumns: {
+      type: String,
+      default: null
+    },
+    inline: {
+      type: Boolean,
+      default: false
     }
   },
 
   computed: {
     style () {
       return {
-        display: 'grid',
+        display: this.inline ? 'inline-grid' : 'grid',
         gridTemplateColumns: this.columnsCss,
         gridTemplateRows: this.rowsCss,
-        gridTemplateAreas: this.areasCss
+        gridTemplateAreas: this.areasCss,
+        gridGap: this.gap,
+        gridAutoRows: this.gridAutoRows,
+        gridAutoColumns: this.gridAutoColumns
       }
     },
     columnsCss () {
-      return this.columns.reduce(this.arrayToCSSFraction, '')
+      if (!this.columns) {
+        return null
+      }
+      return this.columns.reduce(this.arrayToCSS, '')
     },
     rowsCss () {
-      return this.rows.reduce(this.arrayToCSSFraction, '')
+      if (!this.rows) {
+        return null
+      }
+      return this.rows.reduce(this.arrayToCSS, '')
     },
     areasCss () {
       if (!this.areas) {
@@ -51,7 +76,7 @@ export default {
   },
 
   methods: {
-    arrayToCSSFraction (acum, item) {
+    arrayToCSS (acum, item) {
       if (typeof item === 'string') {
         // if not a number print as is (auto, 10px, 20%, etc)
         return `${acum} ${item}`
