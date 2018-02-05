@@ -1,7 +1,9 @@
 
 # vue-css-grid
 Components for easier grid CSS layouts in Vue
+
 [![npm version](https://badge.fury.io/js/vue-css-grid.svg)](https://badge.fury.io/js/vue-css-grid)
+
 
 ### `Important! Version 0.1.1 users`
 Breaking changes on this new version:
