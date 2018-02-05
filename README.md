@@ -2,9 +2,9 @@
 
 >Components for easier grid CSS layouts in Vue
 
-## Version 0.1.1 users
 ### `Important!`
->Breaking changes on this new version:
+### `Version 0.1.1 users`
+Breaking changes on this new version:
 >All components names were changed to follow the rules of [style guide](https://vuejs.org/v2/style-guide/).
 >Also the usage of `responsive`, now `viewport-listener`, changed from listening to events to a `v-model` approach (see details below).
 
@@ -38,11 +38,11 @@ Vue.component('viewport-listener', ViewportListener)
 ### `<css-grid>`
 A component to define the grid properties. It should contain `css-grid-item` components directly in the first level.
 #### Props
->##### columns: required
+>##### columns
 >Array of strings that defines the number of columns and their size.
 >You can use any combination of css sizing rules like `20px`, `1fr`, `20%` or `auto`.
 
->##### rows: required
+>##### rows
 >Array of strings that defines the number of rows and their size.
 >Also you can use any combination of css sizing rules.
 
