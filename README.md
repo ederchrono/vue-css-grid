@@ -1,9 +1,9 @@
-# vue-css-grid
 
+# vue-css-grid
+[![npm version](https://badge.fury.io/js/vue-css-grid.svg)](https://badge.fury.io/js/vue-css-grid)
 >Components for easier grid CSS layouts in Vue
 
-### `Important!`
-### `Version 0.1.1 users`
+### `Important! Version 0.1.1 users`
 Breaking changes on this new version:
 >All components names were changed to follow the rules of [style guide](https://vuejs.org/v2/style-guide/).
 >Also the usage of `responsive`, now `viewport-listener`, changed from listening to events to a `v-model` approach (see details below).
