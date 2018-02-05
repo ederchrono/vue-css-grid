@@ -6,7 +6,7 @@
 
     <css-grid-item area="title">
       <color-block color="#BBBDF6">
-        <h1>A typical web layout</h1>
+        <h1>Header</h1>
       </color-block>
     </css-grid-item>
 
@@ -17,7 +17,6 @@
     </css-grid-item>
 
     <css-grid-item area="main">
-      <h1>nested grid with auto-row and no areas</h1>
       <main-content />
     </css-grid-item>
 
@@ -38,7 +37,9 @@
 </template>
 
 <script>
+// Component used to show the cell areas clearly
 import colorBlock from './examples/ColorBlock'
+// A nested grid with more use cases
 import mainContent from './examples/MainContent'
 
 export default {
@@ -49,11 +50,13 @@ export default {
 
   data () {
     return {
+      // default viewport, mobile first
       viewport: {width: 320, height: 568},
 
+      // 3x3 grid
       desktopGrid: {
         columns: ['20%', 'auto', '20%'],
-        rows: ['100px', '500px', '100px'],
+        rows: ['100px', 'auto', '100px'],
         areas: [
           ['title', 'title', 'title'],
           ['leftbar', 'main', 'rightbar'],
@@ -61,9 +64,10 @@ export default {
         ]
       },
 
+      // 2x4 grid
       tabletGrid: {
         columns: ['30%', 'auto'],
-        rows: ['150px', '400px', '400px', '100px'],
+        rows: ['150px', '400px', 'auto', '100px'],
         areas: [
           ['title', 'title'],
           ['leftbar', 'main'],
@@ -72,6 +76,7 @@ export default {
         ]
       },
 
+      // 1x5 grid
       mobileGrid: {
         columns: ['100%'],
         rows: [
@@ -93,6 +98,7 @@ export default {
   },
 
   computed: {
+    // change Layout according to the viewport size
     currentGrid () {
       if (this.viewport.isDesktop ||
         this.viewport.isLargeDesktop) {

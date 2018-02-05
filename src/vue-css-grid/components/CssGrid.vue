@@ -27,11 +27,11 @@ export default {
       type: String,
       default: null
     },
-    gridAutoRows: {
+    autoRows: {
       type: String,
       default: null
     },
-    gridAutoColumns: {
+    autoColumns: {
       type: String,
       default: null
     },
@@ -49,8 +49,8 @@ export default {
         gridTemplateRows: this.rowsCss,
         gridTemplateAreas: this.areasCss,
         gridGap: this.gap,
-        gridAutoRows: this.gridAutoRows,
-        gridAutoColumns: this.gridAutoColumns
+        gridAutoRows: this.autoRows,
+        gridAutoColumns: this.autoColumns
       }
     },
     columnsCss () {

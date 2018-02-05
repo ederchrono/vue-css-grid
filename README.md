@@ -33,17 +33,33 @@ Vue.component('viewport-listener', ViewportListener)
 A component to define the grid properties. It should contain `css-grid-item` components directly in the first level.
 #### Props
 >##### columns: required
->Array of strings that defines the number of columns and their size. 
+>Array of strings that defines the number of columns and their size.
 >You can use any combination of css sizing rules like `20px`, `1fr`, `20%` or `auto`.
 
 >##### rows: required
->Array of strings that defines the number of rows and their size. 
+>Array of strings that defines the number of rows and their size.
 >Also you can use any combination of css sizing rules.
 
->##### areas: required
+>##### areas
 >A matrix of strings with dimensions `rows x columns`.
 >It defines the areas that will fill each cell of the grid.
 
+>##### htmlTag: default 'div'
+>String that defines the type of html node that the grid component should be.
+
+>##### gap
+>Defines the gutter between `grid-items`, can be either one value (`10px`) or two (`5px 10px`) for horizontal and vertical gutter.
+
+>##### autoRows
+>Useful to define the size of rows when the number of `grid-items` can be larger than the defined grid, causing more rows than expected.
+>This is just a shorthand for the CSS grid property `grid-auto-rows`, so you can use any of the allowed strings.
+
+>##### autoColumns
+>Similar to gridAutoRows but for columns. Also a shorthand for the CSS grid property `grid-auto-columns`, so you can use any of the allowed strings.
+
+
+>##### inline: default false
+>Boolean to define if the `display` property should be `inline-grid` instead of just `grid`.
 
 
 ### `<css-grid-item>`
@@ -51,13 +67,19 @@ Component to define the area of the grid to be used. It must be directly inside 
 
 You can add another `css-grid` component inside the `css-grid-item` to create more complex layouts nesting grids.
 #### Props
->##### area: required
+>##### area
 >A string that matches one of the areas defined in the grid component
 
->##### html-tag: optional
+>##### html-tag
 >By default the `css-grid-item` will create a `<div>`, with this property you can define the HTML element.
 
+>##### x
+>##### endX | width
+>When not using the `area` property, you can define the `grid-column-start` with `x`, and either use `endX` to declare where the item ends, or `width` to declare the number of columns the item should cover.
 
+>##### y
+>##### endY | height
+>Similarly you can use `y`, `endY` or `height` to define the row position of the gridItem. Remember that if an area is already defined, this will not work.
 
 ### `<viewport-listener>`
 A component that just adds functionality (won't render anything), it emits an object with viewport data, that you can use with v-model.
@@ -75,43 +97,6 @@ A component that just adds functionality (won't render anything), it emits an ob
 >True when `992 <= viewport.width < 1200`
 >##### isLargeDesktop: Boolean
 >True when `viewport.width >= 1200`
-
-## Usage
-
-```HTML
-<!-- A 2x3 example -->
-<!-- For columns and rows you can use %, px, fr or any CSS measure -->
-<css-grid
-  :columns="['200px', 'auto']"
-  :rows="['150px', 'auto', '100px']"
-  :areas="[
-    ['header', 'header'],
-    ['sidebar', 'main'],
-    ['footer', 'footer']
-  ]">
-
-  <!-- This item would fill the top row, both cells called "header" in the areas -->
-  <css-grid-item area="header">
-    <h2>Header</h2>
-  </css-grid-item>
-
-  <css-grid-item area="sidebar">
-    <p>sidebar</p>
-  </css-grid-item>
-
-  <!-- Define a custom html tag -->
-  <css-grid-item area="main" html-tag="article">
-    <h1>Main</h1>
-  </css-grid-item>
-
-  <css-grid-item area="footer">
-    <h3>Footer</h3>
-  </css-grid-item>
-
-  <viewport-listener v-model="viewportObject">
-</css-grid>
-```
-
 
 ## Example
 >For a full running example with responsive breakpoints, refer to [Example.vue](./src/Example.vue)
