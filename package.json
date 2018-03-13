@@ -1,6 +1,6 @@
 {
   "name": "vue-css-grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Components for easier grid CSS layouts in Vue",
   "main": "src/vue-css-grid/index.js",
   "scripts": {
